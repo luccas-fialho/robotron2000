@@ -3,6 +3,8 @@ const somar = document.querySelector("#somar")
 const braco = document.querySelector("#braco")
 const controle = document.querySelectorAll("[data-controle]")
 const estatisticas = document.querySelectorAll("[data-estatistica]")
+const robo = document.querySelector(".robo")
+const botao = document.querySelector(".botoes-cor");
 const pecas = {
     "bracos": {
         "forca": 29,
@@ -37,6 +39,10 @@ const pecas = {
     }
 }
 
+botao.addEventListener('click', (evento) => {
+    trocaImagem(evento.target.innerText);
+})
+
 controle.forEach((elemento) => {
     elemento.addEventListener('click', (evento) => {
         manipulaDados(evento.target.dataset.controle, evento.target.parentNode)
@@ -58,3 +64,7 @@ function atualizaEstatisticas(peca) {
         elemento.textContent = parseInt(elemento.textContent) + pecas[peca][elemento.dataset.estatistica]
     })
 }
+
+function trocaImagem(cor){
+    robo.setAttribute('src', "img/Robotron 2000 - " + cor + ".png");
+ }
